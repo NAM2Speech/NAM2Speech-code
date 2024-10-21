@@ -4,6 +4,7 @@ Official code for Interspeech 2024 paper on "Towards Improving NAM-to-Speech Syn
 ## Table of Contents
 - [Libraries Installation](#libraries-installation)
 - [Training NAM2Speech on CSTR NAM TIMIT Plus Corpus](#training-nam2speech-on-cstr-nam-timit-plus-corpus)
+- [Things-to-do](#things-to-do)
 - [Cite](#cite)
 
 ## Libraries Installation
@@ -167,6 +168,10 @@ To train NAM2Speech, follow these steps:
     ```bash
     python wer.py -o runs/data/predicted_speech/ -t runs/data/text -s runs/data/calculated_wer.txt
     ```
+
+## Things-to-do
+
+- The initial and trailing silence can be removed from the samples of the CSTR NAM TIMIT Plus corpus. However, this may misalign the data with the simulated ground truth. To address this, a DTW algorithm can be employed to temporally align the input NAM with the simulated targets for Seq2Seq training as shown in our paper, potentially enhancing performance.
 
 ## Cite
 If you use this code, please cite the following paper:
