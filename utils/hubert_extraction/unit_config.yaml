@@ -1,0 +1,6 @@
+path:
+  hubert_ckpt: utils/hubert_extraction/hubert_base_ls960.pt
+  km_path: utils/hubert_extraction/hubert_base_ls960_L9_km500.bin
+  root_dir: runs/hubert_extraction
+  audio_dir: runs/data/nam
+  predicted_feat_dir: runs/TTE/predicted_features # Folder containing wav files can be LJSpeech, nam, whisper
