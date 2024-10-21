@@ -63,9 +63,9 @@ To train NAM2Speech, follow these steps:
     ```
 - Note: HuBERT units have already been extracted for the corpus and are available at [this Google Drive link](https://drive.google.com/file/d/1zY9oT221wcvMvyY5iTJ4_4EsSrLdEwfs/view?usp=sharing). Download and save it at `runs/hubert_extraction/whisper.txt`.
 
-### Step 5: Infer using LJSpeech trained vocoder on HuBERT units extracted from `whisper` samples. This creates speech using `whisper` content in `LJSpeech` voice. The generated files are available at `runs/data/simulated_gt_from_whisper_content_inLJSpeechvoice`.
+### Step 5: Infer using LJSpeech trained vocoder on HuBERT units extracted from `whisper` samples.
 
-- Infer the LJSpeech trained vocoder:
+- Infer the LJSpeech trained vocoder. This creates speech using `whisper` content in `LJSpeech` voice. The generated files are available at `runs/data/simulated_gt_from_whisper_content_inLJSpeechvoice`:
     ```bash
     python utils/vocoder/inference.py --checkpoint_file runs/vocoder/LJSpeech/checkpoints -n 500 --input_code_file runs/hubert_extraction/whisper.txt --output_dir runs/data/simulated_gt_from_whisper_content_inLJSpeechvoice --config utils/vocoder/LJSpeech_config.json
     ```
@@ -92,9 +92,9 @@ To train NAM2Speech, follow these steps:
     CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.run --nproc_per_node=4 utils/vocoder/train.py --checkpoint_path runs/vocoder/NAM/checkpoints --config utils/vocoder/NAM_config.json
     ```
 
-### Step 9: Infer using NAM trained vocoder on HuBERT units extracted from `LJSpeech` samples. This creates speech using `LJSpeech` content in `NAM` voice. The generated files are available at `runs/data/LJNAM`.
+### Step 9: Infer using NAM trained vocoder on HuBERT units extracted from `LJSpeech` samples.
 
-- Infer the NAM trained vocoder:
+- Infer the NAM trained vocoder. This creates speech using `LJSpeech` content in `NAM` voice. The generated files are available at `runs/data/LJNAM`:
     ```bash
     python utils/vocoder/inference.py --checkpoint_file runs/vocoder/NAM/checkpoints -n 15000 --input_code_file runs/hubert_extraction/LJSpeech.txt --output_dir runs/data/LJNAM --config utils/vocoder/NAM_config.json
     ```
@@ -155,9 +155,9 @@ To train NAM2Speech, follow these steps:
     python utils/hubert_extraction/unit_extractor.py utils/hubert_extraction/unit_config.yaml
     ```
 
-### Step 18: Infer using LJSpeech trained vocoder on the predicted HuBERT units. The generated files are available at `runs/data/predicted_features`.
+### Step 18: Infer using `LJSpeech` trained vocoder on the predicted HuBERT units.
 
-- Infer the LJSpeech trained vocoder:
+- Infer the LJSpeech trained vocoder. The generated files are available at `runs/data/predicted_features`.:
     ```bash
     python utils/vocoder/inference.py --checkpoint_file runs/vocoder/LJSpeech/checkpoints -n 500 --input_code_file runs/hubert_extraction/predicted_features.txt --output_dir runs/data/predicted_speech --config utils/vocoder/LJSpeech_config.json
     ```
